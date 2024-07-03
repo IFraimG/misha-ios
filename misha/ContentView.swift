@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  misha
-//
-//  Created by MacBook on 01.07.2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {

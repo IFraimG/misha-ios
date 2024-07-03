@@ -7,13 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA2141EE2C3587A400B5799C /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2141ED2C3587A400B5799C /* ShareViewController.swift */; };
+		FA2141F12C3587A400B5799C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FA2141F02C3587A400B5799C /* Base */; };
+		FA2141F52C3587A400B5799C /* Share.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FA2141EB2C3587A400B5799C /* Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FA2141FB2C3587EC00B5799C /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2141FA2C3587EC00B5799C /* TextInputViewController.swift */; };
 		FA5E20B52C32F4CA00ED8989 /* mishaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E20B42C32F4CA00ED8989 /* mishaApp.swift */; };
 		FA5E20B72C32F4CB00ED8989 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E20B62C32F4CB00ED8989 /* ContentView.swift */; };
 		FA5E20B92C32F4CE00ED8989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5E20B82C32F4CE00ED8989 /* Assets.xcassets */; };
 		FA5E20BC2C32F4CE00ED8989 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5E20BB2C32F4CE00ED8989 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FA2141F32C3587A400B5799C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA5E20A92C32F4CA00ED8989 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA2141EA2C3587A400B5799C;
+			remoteInfo = Share;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FA2141F62C3587A400B5799C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FA2141F52C3587A400B5799C /* Share.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FA2141EB2C3587A400B5799C /* Share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2141ED2C3587A400B5799C /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		FA2141F02C3587A400B5799C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		FA2141F22C3587A400B5799C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA2141FA2C3587EC00B5799C /* TextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
+		FA2141FC2C35885C00B5799C /* Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Share.entitlements; sourceTree = "<group>"; };
+		FA2141FD2C35886700B5799C /* misha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = misha.entitlements; sourceTree = "<group>"; };
 		FA5E20B12C32F4CA00ED8989 /* misha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = misha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5E20B42C32F4CA00ED8989 /* mishaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mishaApp.swift; sourceTree = "<group>"; };
 		FA5E20B62C32F4CB00ED8989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -22,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA2141E82C3587A400B5799C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA5E20AE2C32F4CA00ED8989 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -32,10 +74,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA2141EC2C3587A400B5799C /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				FA2141FC2C35885C00B5799C /* Share.entitlements */,
+				FA2141ED2C3587A400B5799C /* ShareViewController.swift */,
+				FA2141EF2C3587A400B5799C /* MainInterface.storyboard */,
+				FA2141F22C3587A400B5799C /* Info.plist */,
+				FA2141FA2C3587EC00B5799C /* TextInputViewController.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		FA5E20A82C32F4CA00ED8989 = {
 			isa = PBXGroup;
 			children = (
 				FA5E20B32C32F4CA00ED8989 /* misha */,
+				FA2141EC2C3587A400B5799C /* Share */,
 				FA5E20B22C32F4CA00ED8989 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5E20B12C32F4CA00ED8989 /* misha.app */,
+				FA2141EB2C3587A400B5799C /* Share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,6 +107,7 @@
 		FA5E20B32C32F4CA00ED8989 /* misha */ = {
 			isa = PBXGroup;
 			children = (
+				FA2141FD2C35886700B5799C /* misha.entitlements */,
 				FA5E20B42C32F4CA00ED8989 /* mishaApp.swift */,
 				FA5E20B62C32F4CB00ED8989 /* ContentView.swift */,
 				FA5E20B82C32F4CE00ED8989 /* Assets.xcassets */,
@@ -70,6 +127,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FA2141EA2C3587A400B5799C /* Share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA2141F92C3587A400B5799C /* Build configuration list for PBXNativeTarget "Share" */;
+			buildPhases = (
+				FA2141E72C3587A400B5799C /* Sources */,
+				FA2141E82C3587A400B5799C /* Frameworks */,
+				FA2141E92C3587A400B5799C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Share;
+			productName = Share;
+			productReference = FA2141EB2C3587A400B5799C /* Share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		FA5E20B02C32F4CA00ED8989 /* misha */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA5E20BF2C32F4CE00ED8989 /* Build configuration list for PBXNativeTarget "misha" */;
@@ -77,10 +151,12 @@
 				FA5E20AD2C32F4CA00ED8989 /* Sources */,
 				FA5E20AE2C32F4CA00ED8989 /* Frameworks */,
 				FA5E20AF2C32F4CA00ED8989 /* Resources */,
+				FA2141F62C3587A400B5799C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FA2141F42C3587A400B5799C /* PBXTargetDependency */,
 			);
 			name = misha;
 			productName = misha;
@@ -97,6 +173,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					FA2141EA2C3587A400B5799C = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					FA5E20B02C32F4CA00ED8989 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -116,11 +195,20 @@
 			projectRoot = "";
 			targets = (
 				FA5E20B02C32F4CA00ED8989 /* misha */,
+				FA2141EA2C3587A400B5799C /* Share */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA2141E92C3587A400B5799C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA2141F12C3587A400B5799C /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA5E20AF2C32F4CA00ED8989 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,6 +221,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA2141E72C3587A400B5799C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA2141FB2C3587EC00B5799C /* TextInputViewController.swift in Sources */,
+				FA2141EE2C3587A400B5799C /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA5E20AD2C32F4CA00ED8989 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,7 +241,78 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FA2141F42C3587A400B5799C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA2141EA2C3587A400B5799C /* Share */;
+			targetProxy = FA2141F32C3587A400B5799C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA2141EF2C3587A400B5799C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA2141F02C3587A400B5799C /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		FA2141F72C3587A400B5799C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8RK388V5N4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Share/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Share;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pushok.misha.Share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA2141F82C3587A400B5799C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8RK388V5N4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Share/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Share;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pushok.misha.Share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		FA5E20BD2C32F4CE00ED8989 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -267,8 +435,10 @@
 		FA5E20C02C32F4CE00ED8989 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = misha/misha.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"misha/Preview Content\"";
@@ -296,8 +466,10 @@
 		FA5E20C12C32F4CE00ED8989 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = misha/misha.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"misha/Preview Content\"";
@@ -325,6 +497,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA2141F92C3587A400B5799C /* Build configuration list for PBXNativeTarget "Share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA2141F72C3587A400B5799C /* Debug */,
+				FA2141F82C3587A400B5799C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA5E20AC2C32F4CA00ED8989 /* Build configuration list for PBXProject "misha" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
