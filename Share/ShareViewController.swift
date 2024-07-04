@@ -16,7 +16,7 @@ class ShareViewController: SLComposeServiceViewController {
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
         
-        
+
         if let extensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
            let itemProvider = extensionItem.attachments?.first {
                 if itemProvider.hasItemConformingToTypeIdentifier(UTType.text.identifier) {

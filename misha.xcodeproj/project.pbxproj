@@ -15,6 +15,9 @@
 		FA5E1CB02C36B19100C74BD6 /* AuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CAF2C36B19100C74BD6 /* AuthRequests.swift */; };
 		FA5E1CB22C36B1FE00C74BD6 /* ResponseSignupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CB12C36B1FE00C74BD6 /* ResponseSignupData.swift */; };
 		FA5E1CB42C36B25900C74BD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CB32C36B25900C74BD6 /* User.swift */; };
+		FA5E1CB82C36D55300C74BD6 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CB72C36D55300C74BD6 /* AuthView.swift */; };
+		FA5E1CBA2C36DD7200C74BD6 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CB92C36DD7200C74BD6 /* SignupView.swift */; };
+		FA5E1CBC2C36DD8400C74BD6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CBB2C36DD8400C74BD6 /* LoginView.swift */; };
 		FA5E20B52C32F4CA00ED8989 /* mishaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E20B42C32F4CA00ED8989 /* mishaApp.swift */; };
 		FA5E20B72C32F4CB00ED8989 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E20B62C32F4CB00ED8989 /* ContentView.swift */; };
 		FA5E20B92C32F4CE00ED8989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5E20B82C32F4CE00ED8989 /* Assets.xcassets */; };
@@ -58,6 +61,9 @@
 		FA5E1CAF2C36B19100C74BD6 /* AuthRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequests.swift; sourceTree = "<group>"; };
 		FA5E1CB12C36B1FE00C74BD6 /* ResponseSignupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSignupData.swift; sourceTree = "<group>"; };
 		FA5E1CB32C36B25900C74BD6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA5E1CB72C36D55300C74BD6 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		FA5E1CB92C36DD7200C74BD6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		FA5E1CBB2C36DD8400C74BD6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FA5E20B12C32F4CA00ED8989 /* misha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = misha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5E20B42C32F4CA00ED8989 /* mishaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mishaApp.swift; sourceTree = "<group>"; };
 		FA5E20B62C32F4CB00ED8989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				FA2142012C358DD500B5799C /* UI */,
+				FA5E1CB72C36D55300C74BD6 /* AuthView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				FA2142022C358DE200B5799C /* LaunchScreenView.swift */,
+				FA5E1CB92C36DD7200C74BD6 /* SignupView.swift */,
+				FA5E1CBB2C36DD8400C74BD6 /* LoginView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -291,9 +300,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5E1CB82C36D55300C74BD6 /* AuthView.swift in Sources */,
 				FA5E20B72C32F4CB00ED8989 /* ContentView.swift in Sources */,
 				FA5E1CB22C36B1FE00C74BD6 /* ResponseSignupData.swift in Sources */,
+				FA5E1CBC2C36DD8400C74BD6 /* LoginView.swift in Sources */,
 				FA5E1CB42C36B25900C74BD6 /* User.swift in Sources */,
+				FA5E1CBA2C36DD7200C74BD6 /* SignupView.swift in Sources */,
 				FA5E20B52C32F4CA00ED8989 /* mishaApp.swift in Sources */,
 				FA2142032C358DE200B5799C /* LaunchScreenView.swift in Sources */,
 				FA5E1CB02C36B19100C74BD6 /* AuthRequests.swift in Sources */,
