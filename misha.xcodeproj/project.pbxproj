@@ -11,6 +11,10 @@
 		FA2141F12C3587A400B5799C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FA2141F02C3587A400B5799C /* Base */; };
 		FA2141F52C3587A400B5799C /* Share.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FA2141EB2C3587A400B5799C /* Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FA2141FB2C3587EC00B5799C /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2141FA2C3587EC00B5799C /* TextInputViewController.swift */; };
+		FA2142032C358DE200B5799C /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2142022C358DE200B5799C /* LaunchScreenView.swift */; };
+		FA5E1CB02C36B19100C74BD6 /* AuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CAF2C36B19100C74BD6 /* AuthRequests.swift */; };
+		FA5E1CB22C36B1FE00C74BD6 /* ResponseSignupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CB12C36B1FE00C74BD6 /* ResponseSignupData.swift */; };
+		FA5E1CB42C36B25900C74BD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E1CB32C36B25900C74BD6 /* User.swift */; };
 		FA5E20B52C32F4CA00ED8989 /* mishaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E20B42C32F4CA00ED8989 /* mishaApp.swift */; };
 		FA5E20B72C32F4CB00ED8989 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E20B62C32F4CB00ED8989 /* ContentView.swift */; };
 		FA5E20B92C32F4CE00ED8989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5E20B82C32F4CE00ED8989 /* Assets.xcassets */; };
@@ -49,6 +53,11 @@
 		FA2141FA2C3587EC00B5799C /* TextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
 		FA2141FC2C35885C00B5799C /* Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Share.entitlements; sourceTree = "<group>"; };
 		FA2141FD2C35886700B5799C /* misha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = misha.entitlements; sourceTree = "<group>"; };
+		FA2142022C358DE200B5799C /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		FA5E1CAC2C36ADCE00C74BD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FA5E1CAF2C36B19100C74BD6 /* AuthRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequests.swift; sourceTree = "<group>"; };
+		FA5E1CB12C36B1FE00C74BD6 /* ResponseSignupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSignupData.swift; sourceTree = "<group>"; };
+		FA5E1CB32C36B25900C74BD6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA5E20B12C32F4CA00ED8989 /* misha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = misha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5E20B42C32F4CA00ED8989 /* mishaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mishaApp.swift; sourceTree = "<group>"; };
 		FA5E20B62C32F4CB00ED8989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +95,47 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
+		FA2141FE2C358BCF00B5799C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA2142012C358DD500B5799C /* UI */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA2142002C358BFC00B5799C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA5E1CB32C36B25900C74BD6 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA2142012C358DD500B5799C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FA2142022C358DE200B5799C /* LaunchScreenView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		FA5E1CAD2C36B10100C74BD6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FA5E1CAE2C36B10C00C74BD6 /* Dto */,
+				FA5E1CAF2C36B19100C74BD6 /* AuthRequests.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FA5E1CAE2C36B10C00C74BD6 /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				FA5E1CB12C36B1FE00C74BD6 /* ResponseSignupData.swift */,
+			);
+			path = Dto;
+			sourceTree = "<group>";
+		};
 		FA5E20A82C32F4CA00ED8989 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +157,10 @@
 		FA5E20B32C32F4CA00ED8989 /* misha */ = {
 			isa = PBXGroup;
 			children = (
+				FA5E1CAD2C36B10100C74BD6 /* Data */,
+				FA5E1CAC2C36ADCE00C74BD6 /* Info.plist */,
+				FA2142002C358BFC00B5799C /* Models */,
+				FA2141FE2C358BCF00B5799C /* Views */,
 				FA2141FD2C35886700B5799C /* misha.entitlements */,
 				FA5E20B42C32F4CA00ED8989 /* mishaApp.swift */,
 				FA5E20B62C32F4CB00ED8989 /* ContentView.swift */,
@@ -190,6 +244,9 @@
 				Base,
 			);
 			mainGroup = FA5E20A82C32F4CA00ED8989;
+			packageReferences = (
+				FA2142042C35916600B5799C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = FA5E20B22C32F4CA00ED8989 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,7 +292,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5E20B72C32F4CB00ED8989 /* ContentView.swift in Sources */,
+				FA5E1CB22C36B1FE00C74BD6 /* ResponseSignupData.swift in Sources */,
+				FA5E1CB42C36B25900C74BD6 /* User.swift in Sources */,
 				FA5E20B52C32F4CA00ED8989 /* mishaApp.swift in Sources */,
+				FA2142032C358DE200B5799C /* LaunchScreenView.swift in Sources */,
+				FA5E1CB02C36B19100C74BD6 /* AuthRequests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +506,7 @@
 				DEVELOPMENT_TEAM = 8RK388V5N4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = misha/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -476,6 +538,7 @@
 				DEVELOPMENT_TEAM = 8RK388V5N4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = misha/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -525,6 +588,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA2142042C35916600B5799C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = FA5E20A92C32F4CA00ED8989 /* Project object */;
 }
