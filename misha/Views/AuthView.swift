@@ -1,34 +1,38 @@
-//
-//  AuthView.swift
-//  misha
-//
-//  Created by MacBook on 04.07.2024.
-//
 
 import SwiftUI
+import SwiftData
 
 struct AuthView: View {
+    @Binding var isAuthenticated: Bool
+    
     @State private var isSignup = true
     
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                Image("Image")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 64, height: 64)
-                    .padding(.horizontal, 20)
-                Image("BubbleFriend")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 245, height: 36)
-                Image("Star")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
-                    .offset(x: -40)
+                if !isSignup {
+                    Image("Image")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 64, height: 64)
+                        .padding(.horizontal, 20)
+                    Image("BubbleFriend")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 245, height: 36)
+                    Image("Star")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 20, height: 20)
+                        .offset(x: -40)
+                } else {
+                    Image("SignupImage")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 64, height: 64)
+                        .padding(.horizontal, 20)
                 }
-                    
+            }
                 HStack {
                     Button(action: {
                         isSignup = true
@@ -60,9 +64,9 @@ struct AuthView: View {
                     Spacer()
                     
                     if isSignup {
-                        SignupView()
+                        SignupView(isAuthenticated: $isAuthenticated)
                     } else {
-                        LoginView()
+                        LoginView(isAuthenticated: $isAuthenticated)
                     }
                     
                     Spacer()
@@ -72,5 +76,5 @@ struct AuthView: View {
 }
 
 #Preview {
-    AuthView()
+    AuthView(isAuthenticated: .constant(false))
 }
