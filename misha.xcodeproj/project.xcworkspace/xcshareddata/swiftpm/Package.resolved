@@ -1,5 +1,5 @@
 {
-  "originHash" : "c63c63846d9c539229e96de38d6af51417e28c0ee9a0bc48bd0f0f19d923c329",
+  "originHash" : "0181bf1e38c64cc81e00ffec2cd6630e999b328301bf801f0787a49f0edc2a53",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -98,6 +98,15 @@
       "state" : {
         "revision" : "b7e1104502eca3a213b46303391ca4d3bc8ddec1",
         "version" : "2.30910.0"
+      }
+    },
+    {
+      "identity" : "popupview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Mijick/PopupView",
+      "state" : {
+        "revision" : "e18cbd9bff46eecaf1fdd5bcc1cd3666d5f05095",
+        "version" : "2.5.0"
       }
     },
     {

@@ -65,6 +65,7 @@ struct LoginView: View {
         do {
             try modelContext.save()
             UserDefaults.standard.set(token, forKey: "token")
+            UserDefaults.standard.set(id, forKey: "userID")
             
             isAuthenticated = true
         } catch {

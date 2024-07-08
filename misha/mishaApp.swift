@@ -9,7 +9,7 @@ struct mishaApp: App {
     @State private var showLaunchScreen = true
     
     var body: some Scene {
-        WindowGroup {
+        WindowGroup() {
             if showLaunchScreen {
                 LaunchScreenView().onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -18,7 +18,7 @@ struct mishaApp: App {
                     }
                 }
             } else {
-                ContentView(isAuthenticated: $isAuthenticated).modelContainer(for: UserData.self)
+                ContentView(isAuthenticated: $isAuthenticated).modelContainer(for: UserData.self).implementPopupView()
             }
         }
     }
