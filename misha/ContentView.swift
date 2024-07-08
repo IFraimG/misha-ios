@@ -3,11 +3,16 @@ import SwiftData
 
 struct ContentView: View {
     @Binding var isAuthenticated: Bool
+    @Binding var url: URL?
     
     var body: some View {
         VStack {
             if isAuthenticated {
-                HomeView(isAuthenticated: $isAuthenticated)
+                if url != nil {
+                    ChooseFolderView(url: $url)
+                } else {
+                    HomeView(isAuthenticated: $isAuthenticated)
+                }
             } else {
                 AuthView(isAuthenticated: $isAuthenticated)
             }
@@ -17,5 +22,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(isAuthenticated: .constant(false))
+    ContentView(isAuthenticated: .constant(false), url: .constant(nil))
 }

@@ -4,9 +4,15 @@ import Social
 import UniformTypeIdentifiers
 //projectid mishaproject-8345c firebase
 class ShareViewController: SLComposeServiceViewController {
+    // description
     private var enteredText: String?
+    
+    // title
     private var selectedText: String?
+    
     private var selectedURL: URL?
+    
+    private var selectedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +36,14 @@ class ShareViewController: SLComposeServiceViewController {
                     }
                 } else if itemProvider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
                     handleURL(itemProvider)
+                } else if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
+                    handleImage(itemProvider)
                 }
         }
     }
     
     override func isContentValid() -> Bool {
-        return selectedText != nil && !selectedText!.isEmpty || selectedURL != nil
+        return selectedText != nil && !selectedText!.isEmpty || selectedURL != nil || selectedImage != nil
     }
     
     override func configurationItems() -> [Any]! {
@@ -63,7 +71,39 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     override func didSelectPost() {
+        guard let userDefaults = UserDefaults(suiteName: "group.com.pushok.misha") else { return }
+        
+        if let enteredText = enteredText {
+            userDefaults.set(enteredText, forKey: "description")
+        }
+        if let selectedText = selectedText {
+            userDefaults.set(selectedText, forKey: "title")
+        }
+        if let selectedURL = selectedURL {
+            userDefaults.set(selectedURL.absoluteString, forKey: "url")
+        }
+        if let selectedImage = selectedImage {
+            if let imageData = selectedImage.pngData() {
+                userDefaults.set(imageData, forKey: "image")
+            } else if let imageData = selectedImage.jpegData(compressionQuality: 1) {
+                userDefaults.set(imageData, forKey: "image")
+            }
+        }
     
+//        if let url = URL(string: "mishaopen://") {
+//            let context = NSExtensionContext()
+//            context.open(url)
+//        }
+        if let url = URL(string: "mishaopen://") {
+             var responder = self as UIResponder?
+             while responder != nil {
+                 if let app = responder as? UIApplication {
+                     app.performSelector(onMainThread: Selector(("openURL:")), with: url, waitUntilDone: true)
+                 }
+                 responder = responder?.next
+             }
+         }
+        
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
     }
     
@@ -83,6 +123,22 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
     
+    private func handleImage(_ itemProvider: NSItemProvider) {
+        itemProvider.loadItem(forTypeIdentifier: UTType.image.identifier, options: nil) { [weak self] (item, error) in
+            if let error = error {
+                print("Failed to load image: \(error.localizedDescription)")
+                return
+            }
+            
+            if let image = item as? UIImage {
+                self?.selectedImage = image
+                DispatchQueue.main.async {
+                    self?.reloadConfigurationItems()
+                }
+                print("Loaded image")
+            }
+           }
+       }
 }
 
 extension ShareViewController: TextInputDelegate {

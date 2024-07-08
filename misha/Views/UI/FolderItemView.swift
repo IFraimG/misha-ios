@@ -20,10 +20,15 @@ struct FolderItemView: View {
                 Text(title)
                     .font(.system(size: 14))
                     .fontWeight(.bold)
+                    .foregroundStyle(Color.black)
                 HStack {
-                    Text("\(notesCount) сохраненных").font(.system(size: 8))
+                    Text("\(notesCount) сохраненных")
+                        .font(.system(size: 8))
+                        .foregroundStyle(Color.black.opacity(0.5))
                     Spacer()
-                    Text(dateOfCreate).font(.system(size: 8))
+                    Text(dateOfCreate)
+                        .font(.system(size: 8))
+                        .foregroundStyle(Color.black.opacity(0.5))
                 }.frame(width: 140)
             }.frame(width: 160, height: 140).background(
                 BottomRoundedRectangle(cornerRadius: 8)
