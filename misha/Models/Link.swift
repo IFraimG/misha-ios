@@ -10,8 +10,10 @@ import Foundation
 struct Link: Codable, Hashable, Identifiable {
     var title: String
     var description: String
-    var folderid: String
-    var linkID: String = ""
+    var folderid: String?
+    // from server
+    var folderID: String
+    var linkID: String
     var link: String
     var image: String
     

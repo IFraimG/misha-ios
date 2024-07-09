@@ -1,12 +1,10 @@
 import UIKit
 import Social
 import UniformTypeIdentifiers
-//projectid mishaproject-8345c firebase
 class ShareViewController: SLComposeServiceViewController {
     // description
     private var enteredText: String?
     
-    // title
     private var selectedText: String?
     
     private var selectedURL: URL?
@@ -37,14 +35,14 @@ class ShareViewController: SLComposeServiceViewController {
                 if itemProvider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
                     handleURL(itemProvider)
                 }
-                if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
-                    handleImage(itemProvider)
-                }
+//                if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
+//                    handleImage(itemProvider)
+//                }
         }
     }
     
     override func isContentValid() -> Bool {
-        return selectedText != nil && !selectedText!.isEmpty || selectedURL != nil || selectedImage != nil
+        return selectedText != nil && !selectedText!.isEmpty || selectedURL != nil
     }
     
     override func configurationItems() -> [Any]! {
@@ -74,27 +72,16 @@ class ShareViewController: SLComposeServiceViewController {
     override func didSelectPost() {
         guard let userDefaults = UserDefaults(suiteName: "group.com.pushok.misha") else { return }
         
+        userDefaults.removeObject(forKey: "url")
+        userDefaults.removeObject(forKey: "description")
+        
         if let enteredText = enteredText {
             userDefaults.set(enteredText, forKey: "description")
-        }
-        if let selectedText = selectedText {
-            userDefaults.set(selectedText, forKey: "title")
         }
         if let selectedURL = selectedURL {
             userDefaults.set(selectedURL.absoluteString, forKey: "url")
         }
-        if let selectedImage = selectedImage {
-            if let imageData = selectedImage.pngData() {
-                userDefaults.set(imageData, forKey: "image")
-            } else if let imageData = selectedImage.jpegData(compressionQuality: 1) {
-                userDefaults.set(imageData, forKey: "image")
-            }
-        }
-    
-//        if let url = URL(string: "mishaopen://") {
-//            let context = NSExtensionContext()
-//            context.open(url)
-//        }
+        
         if let url = URL(string: "mishaopen://") {
              var responder = self as UIResponder?
              while responder != nil {

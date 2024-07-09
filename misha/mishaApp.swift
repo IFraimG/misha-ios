@@ -8,7 +8,7 @@ struct mishaApp: App {
     
     @State private var showLaunchScreen = true
     
-    @State private var url: URL?
+    @StateObject private var userViewModel = UserViewModel()
     
     var body: some Scene {
         WindowGroup() {
@@ -20,9 +20,9 @@ struct mishaApp: App {
                     }
                 }
             } else {
-                ContentView(isAuthenticated: $isAuthenticated, url: $url).modelContainer(for: UserData.self).implementPopupView()
+                ContentView(viewModel: userViewModel, isAuthenticated: $isAuthenticated).modelContainer(for: UserData.self).implementPopupView()
                     .onOpenURL { url in
-                        self.url = url
+                        userViewModel.setUrlForLink(url: url)
                     }
             }
         }
@@ -35,10 +35,4 @@ struct mishaApp: App {
             isAuthenticated = false
         }
     }
-    
-//    private func handleOpenURL(_ url: URL) {
-//        if isAuthenticated {
-//            
-//        }
-//    }
 }

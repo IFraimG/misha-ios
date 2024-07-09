@@ -2,10 +2,7 @@
 import SwiftUI
 
 struct ChooseFolderView: View {
-    @State private var userViewModel = UserViewModel()
-    
-    @Binding var url: URL?
-
+    @ObservedObject var viewModel: UserViewModel
     
     var body: some View {
         VStack {
@@ -13,17 +10,17 @@ struct ChooseFolderView: View {
                 chooseFolder(folderID: folderID)
             }))
         }.onAppear() {
-            userViewModel.getFolders()
+            viewModel.getFolders()
         }
     }
     
     private func chooseFolder(folderID: String) {
         Task {
-            await userViewModel.saveLinkToFolder(folderID: folderID)
+            await viewModel.saveLinkToFolder(folderID: folderID)
         }
     }
 }
 
 #Preview {
-    ChooseFolderView(url: .constant(nil))
+    ChooseFolderView(viewModel: UserViewModel())
 }

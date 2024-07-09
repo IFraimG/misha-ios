@@ -1,14 +1,9 @@
-//
-//  FoldersListView.swift
-//  misha
-//
-//  Created by MacBook on 08.07.2024.
-//
+
 
 import SwiftUI
 
 struct FoldersListView: View {
-    @State private var userViewModel = UserViewModel()
+    @StateObject private var userViewModel = UserViewModel()
     
     @Binding var title: String
     

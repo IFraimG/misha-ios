@@ -5,6 +5,10 @@ struct LinksListView: View {
     @Binding var folder: Folder
     @State private var isButtons = false
     
+    @StateObject private var linkViewModel = LinkViewModel()
+    
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
         VStack {
             HStack(alignment: .center) {
@@ -36,6 +40,18 @@ struct LinksListView: View {
                             }
                         ])
                     }
+            }
+            
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(linkViewModel.linksList) { link in
+                        LinkUIView(linkItem: link)
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+            }.onAppear() {
+                linkViewModel.getListLinks(folderID: folder.folderID)
             }
             
             Spacer()

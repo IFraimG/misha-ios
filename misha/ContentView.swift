@@ -2,14 +2,15 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @ObservedObject var viewModel: UserViewModel
+    
     @Binding var isAuthenticated: Bool
-    @Binding var url: URL?
     
     var body: some View {
         VStack {
             if isAuthenticated {
-                if url != nil {
-                    ChooseFolderView(url: $url)
+                if viewModel.url != nil {
+                    ChooseFolderView(viewModel: viewModel)
                 } else {
                     HomeView(isAuthenticated: $isAuthenticated)
                 }
@@ -22,5 +23,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(isAuthenticated: .constant(false), url: .constant(nil))
+    ContentView(viewModel: UserViewModel(), isAuthenticated: .constant(false))
 }

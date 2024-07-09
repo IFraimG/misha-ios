@@ -1,17 +1,15 @@
-//
-//  UserViewModel.swift
-//  misha
-//
-//  Created by MacBook on 08.07.2024.
-//
+
 
 import Foundation
 import HTMLReader
 import UIKit
 
-@Observable
-class UserViewModel {
-    var foldersList: [Folder] = []
+
+class UserViewModel: ObservableObject {
+    @Published var url: URL?
+    
+    @Published var foldersList: [Folder] = []
+    @Published var resultLinkCreateState: LinkCreateState = LinkCreateState.GETTING
     
     func getFolders() {
         guard let storedUserID = UserDefaults.standard.string(forKey: "userID"), !storedUserID.isEmpty else {
@@ -37,8 +35,11 @@ class UserViewModel {
     }
     
     func saveLinkToFolder(folderID: String) async {
+        self.resultLinkCreateState = LinkCreateState.GETTING
+        
         guard let storedToken = UserDefaults.standard.string(forKey: "token"), !storedToken.isEmpty else {
             print("error token")
+            self.resultLinkCreateState = LinkCreateState.FAILURE
             return
         }
         
@@ -49,14 +50,16 @@ class UserViewModel {
                     let (title, image) = await self.fetchWebsiteData(from: url)
                     let storedDescription = userDefaults.string(forKey: "description")
                     
-                    let link = Link(title: title, description: storedDescription ?? "", folderid: folderID, linkID: "", link: storedURL, image: "", loadImage: image)
+                    let link = Link(title: title, description: storedDescription ?? "", folderid: folderID, folderID: folderID, linkID: "", link: storedURL, image: "", loadImage: image)
                     linkCreateRequest(withToken: storedToken, with: link) { result in
                         DispatchQueue.main.async {
                             switch result {
                             case .success(let data):
-                                print(".....")
+                                self.resultLinkCreateState = LinkCreateState.CREATED
+                                self.url = nil
                             case .failure(let error):
                                 print("error \(error.localizedDescription)")
+                                self.resultLinkCreateState = LinkCreateState.FAILURE
                             }
                         }
                     }
@@ -83,17 +86,11 @@ class UserViewModel {
             if let metaElement = document.firstNode(matchingSelector: "meta[property='og:image']"),
                let imageURLString = metaElement.attributes["content"],
                let imageURL = URL(string: imageURLString) {
-                    if imageURLString.hasPrefix("http://") || imageURLString.hasPrefix("https://") {
-                        imageData = try await loadPreviewImage(from: imageURL)
-                    } else {
-                        if let host = url.host {
-                            var isHttps: String = url.absoluteString.hasPrefix("https://") ? "https://" : "http://"
-                            let resResult: String = isHttps + host + imageURLString
-                            if let fullImageURL = URL(string: resResult) {
-                                imageData = try await loadPreviewImage(from: fullImageURL)
-                            }
-                        }
-                    }
+                imageData = try await loadPreviewImage(imageURLString: imageURLString, imageURL: imageURL, url: url)
+            } else if let metaElement = document.firstNode(matchingSelector: "link[rel='apple-touch-icon']"),
+                let imageURLString = metaElement.attributes["href"],
+                let imageURL = URL(string: imageURLString) {
+                    imageData = try await loadPreviewImage(imageURLString: imageURLString, imageURL: imageURL, url: url)
             }
         } catch {
             print("Failed to fetch website data: \(error.localizedDescription)")
@@ -103,8 +100,31 @@ class UserViewModel {
     }
 
      
-    func loadPreviewImage(from url: URL) async throws -> Data? {
-        let (data, _) = try await URLSession.shared.data(from: url)
-        return data
+    private func loadPreviewImage(imageURLString: String, imageURL: URL, url: URL) async throws -> Data? {
+        var imageData: Data?
+        
+        if imageURLString.hasPrefix("http://") || imageURLString.hasPrefix("https://") {
+            let (data, _) = try await URLSession.shared.data(from: imageURL)
+            imageData = data
+        } else {
+            if let host = url.host {
+                var isHttps: String = url.absoluteString.hasPrefix("https://") ? "https://" : "http://"
+                let resResult: String = isHttps + host + imageURLString
+                if let fullImageURL = URL(string: resResult) {
+                    let (data, _) = try await URLSession.shared.data(from: fullImageURL)
+                    imageData = data
+                }
+            }
+        }
+        
+        return imageData
+    }
+    
+    func getResultLinkCreateState() -> LinkCreateState {
+        return resultLinkCreateState
+    }
+    
+    func setUrlForLink(url: URL?) {
+        self.url = url
     }
 }
