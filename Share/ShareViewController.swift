@@ -1,6 +1,5 @@
 import UIKit
 import Social
-
 import UniformTypeIdentifiers
 //projectid mishaproject-8345c firebase
 class ShareViewController: SLComposeServiceViewController {
@@ -34,9 +33,11 @@ class ShareViewController: SLComposeServiceViewController {
                             }
                         }
                     }
-                } else if itemProvider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
+                }
+                if itemProvider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
                     handleURL(itemProvider)
-                } else if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
+                }
+                if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
                     handleImage(itemProvider)
                 }
         }

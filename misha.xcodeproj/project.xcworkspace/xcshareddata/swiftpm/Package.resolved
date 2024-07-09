@@ -1,5 +1,5 @@
 {
-  "originHash" : "0181bf1e38c64cc81e00ffec2cd6630e999b328301bf801f0787a49f0edc2a53",
+  "originHash" : "41bcb837fe0ce7c1af6b6b03b1057111c1142b97f26ebabe81c4f03a1133c1bd",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -71,6 +71,15 @@
       "state" : {
         "revision" : "a2ab612cb980066ee56d90d60d8462992c07f24b",
         "version" : "3.5.0"
+      }
+    },
+    {
+      "identity" : "htmlreader",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nolanw/HTMLReader",
+      "state" : {
+        "revision" : "d4003bf59feead2361f684a372123eae0afe104f",
+        "version" : "2.2.1"
       }
     },
     {

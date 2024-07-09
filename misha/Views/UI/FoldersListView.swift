@@ -49,7 +49,6 @@ struct FoldersListView: View {
                                 FolderItemView(title: folder.title, notesCount: .constant(230), dateOfCreate: folder.dateOfCreated)
                                     .onTapGesture {
                                         onItemClick?(folder.folderID.wrappedValue)
-//                                        userViewModel.saveLinkToFolder(folderID: folder.folderID.wrappedValue)
                                     }
                             }
                         }

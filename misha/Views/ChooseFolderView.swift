@@ -18,7 +18,9 @@ struct ChooseFolderView: View {
     }
     
     private func chooseFolder(folderID: String) {
-        userViewModel.saveLinkToFolder(folderID: folderID)
+        Task {
+            await userViewModel.saveLinkToFolder(folderID: folderID)
+        }
     }
 }
 

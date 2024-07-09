@@ -30,6 +30,7 @@
 		FA5E20B72C32F4CB00ED8989 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E20B62C32F4CB00ED8989 /* ContentView.swift */; };
 		FA5E20B92C32F4CE00ED8989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5E20B82C32F4CE00ED8989 /* Assets.xcassets */; };
 		FA5E20BC2C32F4CE00ED8989 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5E20BB2C32F4CE00ED8989 /* Preview Assets.xcassets */; };
+		FA6598332C3D35CD00C7FD5C /* HTMLReader in Frameworks */ = {isa = PBXBuildFile; productRef = FA6598322C3D35CD00C7FD5C /* HTMLReader */; };
 		FA7DC1662C3BEAC4002E7FB9 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DC1652C3BEAC4002E7FB9 /* Folder.swift */; };
 		FA7DC1682C3BEB55002E7FB9 /* ResponseCreateFolderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DC1672C3BEB55002E7FB9 /* ResponseCreateFolderRequest.swift */; };
 		FA7DC16A2C3C05F2002E7FB9 /* GetFoldersListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DC1692C3C05F2002E7FB9 /* GetFoldersListRequest.swift */; };
@@ -120,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6598332C3D35CD00C7FD5C /* HTMLReader in Frameworks */,
 				FA1022E72C39B4ED00B6D82B /* MijickPopupView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +330,7 @@
 			name = misha;
 			packageProductDependencies = (
 				FA1022E62C39B4ED00B6D82B /* MijickPopupView */,
+				FA6598322C3D35CD00C7FD5C /* HTMLReader */,
 			);
 			productName = misha;
 			productReference = FA5E20B12C32F4CA00ED8989 /* misha.app */;
@@ -363,6 +366,7 @@
 			packageReferences = (
 				FA2142042C35916600B5799C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				FA1022E52C39B4ED00B6D82B /* XCRemoteSwiftPackageReference "PopupView" */,
+				FA062C382C3D34AE00FD1DC3 /* XCRemoteSwiftPackageReference "HTMLReader" */,
 			);
 			productRefGroup = FA5E20B22C32F4CA00ED8989 /* Products */;
 			projectDirPath = "";
@@ -728,6 +732,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FA062C382C3D34AE00FD1DC3 /* XCRemoteSwiftPackageReference "HTMLReader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nolanw/HTMLReader";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.1;
+			};
+		};
 		FA1022E52C39B4ED00B6D82B /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Mijick/PopupView";
@@ -751,6 +763,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA1022E52C39B4ED00B6D82B /* XCRemoteSwiftPackageReference "PopupView" */;
 			productName = MijickPopupView;
+		};
+		FA6598322C3D35CD00C7FD5C /* HTMLReader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA062C382C3D34AE00FD1DC3 /* XCRemoteSwiftPackageReference "HTMLReader" */;
+			productName = HTMLReader;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

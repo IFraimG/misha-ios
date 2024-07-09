@@ -9,11 +9,13 @@ import Foundation
 
 struct Link: Codable, Hashable, Identifiable {
     var title: String
-    var description: String = ""
-    var folderID: String = ""
+    var description: String
+    var folderid: String
     var linkID: String = ""
     var link: String
     var image: String
     
-    var id: String { folderID }
+    var loadImage: Data?
+    
+    var id: String { linkID }
 }
