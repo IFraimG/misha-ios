@@ -2,6 +2,8 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct LinksListView: View {
+    @Environment(\.dismiss) var dismiss
+    
     @Binding var folder: Folder
     @State private var isButtons = false
     
@@ -33,7 +35,8 @@ struct LinksListView: View {
                                 linkViewModel.setDeleteLink(isDeleteLink: !linkViewModel.isDeleteLink)
                             },
                             .default(Text("Удалить папку")) {
-                                
+                                linkViewModel.deleteFolder(folderID: folder.folderID)
+                                dismiss()
                             }
                         ])
                     }

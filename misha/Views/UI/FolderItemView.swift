@@ -30,9 +30,6 @@ struct FolderItemView: View {
                     Text(dateOfCreate)
                         .font(.system(size: 8))
                         .foregroundStyle(Color.black.opacity(0.5))
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
                 }.frame(width: 140)
             }.frame(width: 160, height: 140).background(
                 BottomRoundedRectangle(cornerRadius: 8)

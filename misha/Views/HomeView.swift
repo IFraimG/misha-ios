@@ -21,20 +21,7 @@ struct HomeView: View {
 //                }
 
         FoldersListView(title: .constant("Misha"), isActiveNav: .constant(true), onItemClick: .constant(nil))
-        
-        Spacer()
-            
-        Button(action: {
-            PopupFolderView().showAndStack()
-        }) {
-            Text("Добавить папку")
-                .frame(maxWidth: .infinity)
-                .padding()
-                    .background(Color.black.opacity(0.05))
-                    .foregroundColor(.blue)
-                    .fontWeight(.medium)
-                    .cornerRadius(10)
-            }.padding(.horizontal, 20).padding(.top, 20)
+    
     }
     
     private func logout() {

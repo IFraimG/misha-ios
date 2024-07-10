@@ -56,6 +56,20 @@ struct FoldersListView: View {
             }.onAppear() {
                 userViewModel.getFolders()
             }
+            
+            Spacer()
+                
+            Button(action: {
+                PopupFolderView(viewModel: userViewModel).showAndStack()
+            }) {
+                Text("Добавить папку")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                        .background(Color.black.opacity(0.05))
+                        .foregroundColor(.blue)
+                        .fontWeight(.medium)
+                        .cornerRadius(10)
+                }.padding(.horizontal, 20).padding(.top, 20)
         }
     }
     

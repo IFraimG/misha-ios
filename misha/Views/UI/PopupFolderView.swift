@@ -3,11 +3,14 @@ import SwiftUI
 import MijickPopupView
 
 struct PopupFolderView: CentrePopup {
+    @ObservedObject var viewModel: UserViewModel
+    
     @State private var folderTitle = ""
     
     func createContent() -> some View {
         VStack(spacing: 0) {
             Text("Введите название")
+                .padding(.top, 60)
             TextField("", text: $folderTitle)
                 .frame(height: 40)
                 .frame(maxWidth: 300)
@@ -45,36 +48,15 @@ struct PopupFolderView: CentrePopup {
             .horizontalPadding(20)
             .bottomPadding(42)
             .cornerRadius(16)
-//            .backgroundColour(Color.clear)
     }
  
     private func makeFolder() {
-        if let storedUserID = UserDefaults.standard.string(forKey: "userID"), !storedUserID.isEmpty {
-            if let storedToken = UserDefaults.standard.string(forKey: "token"), !storedToken.isEmpty {
-                print("userID \(storedUserID)")
-                folderCreateRequest(withToken: storedToken, with: Folder(
-                    title: folderTitle,
-                    folderID: "",
-                    userID: storedUserID,
-                    position: 0,
-                    dateOfCreated: "" )) { result in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(_):
-                            self.folderTitle = ""
-                            dismiss()
-                        case .failure(let error):
-                            print("error \(error.localizedDescription)")
-                            dismiss()
-                        }
-                        
-                    }
-                }
-            }
-        }
+        viewModel.makeFolder(title: folderTitle)
+        self.folderTitle = ""
+        dismiss()
     }
 }
 
 #Preview {
-    PopupFolderView().createContent()
+    PopupFolderView(viewModel: UserViewModel()).createContent()
 }

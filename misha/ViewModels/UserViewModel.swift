@@ -34,6 +34,29 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    func makeFolder(title: String) {
+        guard let storedUserID = UserDefaults.standard.string(forKey: "userID"), !storedUserID.isEmpty else {
+            print("error userID")
+            return
+        }
+        
+        guard let storedToken = UserDefaults.standard.string(forKey: "token"), !storedToken.isEmpty else {
+            print("error token")
+            return
+        }
+        
+        folderCreateRequest(withToken: storedToken, with: Folder(title: title, folderID: "", userID: storedUserID, position: 0,  dateOfCreated: "" )) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.foldersList.append(data)
+                case .failure(let error):
+                    print("error \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
     func saveLinkToFolder(folderID: String) async {
         self.resultLinkCreateState = LinkCreateState.GETTING
         

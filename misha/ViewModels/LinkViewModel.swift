@@ -41,4 +41,21 @@ class LinkViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteFolder(folderID: String) {
+        let token: String = UserPrivateManager.shared.getUserToken()
+        
+        if !token.isEmpty {
+            folderRemoveRequest(withToken: token, withFolderID: folderID) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(_):
+                        print("success")
+                    case .failure(let error):
+                        print("error \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+    }
 }
