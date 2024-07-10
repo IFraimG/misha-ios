@@ -16,28 +16,23 @@ struct LinkPreviewImage: View {
                 switch phase {
                 case .empty:
                     ZStack {
-                        Color.black
-                            .frame(width: 350, height: 400)
+                        Color.gray.frame(width: 160, height: 160)
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             .scaleEffect(1.5)
                     }
                 case .success(let image):
                     image.resizable()
-                        .aspectRatio(contentMode: .fill)
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: 160, height: 160)
-                        .frame(minHeight: 160)
-                        .frame(maxHeight: 250)
+                        .frame(maxWidth: 160, maxHeight: 160)
                         .cornerRadius(8)
-                        .shadow(color: .black, radius: 8, x: 0, y: 2)
+                        .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 2)
                 case .failure(_):
                     Image("Empty").resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 160, height: 160)
-                        .frame(minHeight: 160)
-                        .frame(maxHeight: 250)
                         .cornerRadius(8)
-                        .shadow(color: .black, radius: 8, x: 0, y: 2)
                 @unknown default:
                     EmptyView()
                 }

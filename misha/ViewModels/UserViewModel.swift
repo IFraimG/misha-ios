@@ -83,15 +83,21 @@ class UserViewModel: ObservableObject {
                 title = titleElement.textContent.trimmingCharacters(in: .whitespacesAndNewlines)
             }
             
-            if let metaElement = document.firstNode(matchingSelector: "meta[property='og:image']"),
-               let imageURLString = metaElement.attributes["content"],
-               let imageURL = URL(string: imageURLString) {
-                imageData = try await loadPreviewImage(imageURLString: imageURLString, imageURL: imageURL, url: url)
-            } else if let metaElement = document.firstNode(matchingSelector: "link[rel='apple-touch-icon']"),
-                let imageURLString = metaElement.attributes["href"],
-                let imageURL = URL(string: imageURLString) {
+                if let metaElement = document.firstNode(matchingSelector: "meta[property='og:image']"),
+                   let imageURLString = metaElement.attributes["content"],
+                   let imageURL = URL(string: imageURLString) {
+                    
                     imageData = try await loadPreviewImage(imageURLString: imageURLString, imageURL: imageURL, url: url)
-            }
+                } else if let metaElement = document.firstNode(matchingSelector: "link[rel='apple-touch-icon']"),
+                    let imageURLString = metaElement.attributes["href"],
+                    let imageURL = URL(string: imageURLString) {
+                    
+                    imageData = try await loadPreviewImage(imageURLString: imageURLString, imageURL: imageURL, url: url)
+                } else if let metaElement = document.firstNode(matchingSelector: "link[rel='icon']"),
+                    let imageURLString = metaElement.attributes["href"],
+                    let imageURL = URL(string: imageURLString) {
+                        imageData = try await loadPreviewImage(imageURLString: imageURLString, imageURL: imageURL, url: url)
+                }
         } catch {
             print("Failed to fetch website data: \(error.localizedDescription)")
         }
@@ -109,14 +115,21 @@ class UserViewModel: ObservableObject {
         } else {
             if let host = url.host {
                 var isHttps: String = url.absoluteString.hasPrefix("https://") ? "https://" : "http://"
-                let resResult: String = isHttps + host + imageURLString
+                
+                var isSlash: String = ""
+                if let firstCharacter = imageURLString.first, firstCharacter == "/" {
+                    isSlash = ""
+                } else {
+                    isSlash = "/"
+                }
+                
+                let resResult: String = isHttps + host + isSlash + imageURLString
                 if let fullImageURL = URL(string: resResult) {
                     let (data, _) = try await URLSession.shared.data(from: fullImageURL)
                     imageData = data
                 }
             }
         }
-        
         return imageData
     }
     
@@ -126,5 +139,28 @@ class UserViewModel: ObservableObject {
     
     func setUrlForLink(url: URL?) {
         self.url = url
+    }
+    
+    func searchFolders(folderTitle: String) {
+        guard let storedUserID = UserDefaults.standard.string(forKey: "userID"), !storedUserID.isEmpty else {
+            print("error userID")
+            return
+        }
+        
+        guard let storedToken = UserDefaults.standard.string(forKey: "token"), !storedToken.isEmpty else {
+            print("error token")
+            return
+        }
+        
+        folderFindRequest(withToken: storedToken, withID: storedUserID, withTitle: folderTitle) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.foldersList = data.folders
+                case .failure(let error):
+                    print("error \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }

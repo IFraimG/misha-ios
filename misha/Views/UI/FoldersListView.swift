@@ -15,7 +15,6 @@ struct FoldersListView: View {
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -24,7 +23,11 @@ struct FoldersListView: View {
                 HStack {
                     HStack {
                         Image(systemName: "magnifyingglass")
-                        TextField("Поиск", text: $folderSearch).font(Font.custom("SF Pro", size: 16))
+                        TextField("Поиск", text: $folderSearch)
+                            .font(Font.custom("SF Pro", size: 16))
+                            .onSubmit {
+                                searchFolder()
+                            }
                     }
                     .padding(10)
                     .overlay(
@@ -38,14 +41,13 @@ struct FoldersListView: View {
                         ForEach($userViewModel.foldersList) { folder in
                             if isActiveNav {
                                 NavigationLink(destination: LinksListView(folder: folder), isActive: $isActiveNav) {
-                                    FolderItemView(title: folder.title, notesCount: .constant(230), dateOfCreate: folder.dateOfCreated)
+                                    FolderItemView(title: folder.title, preview: folder.preview, dateOfCreate: folder.dateOfCreated)
                                 }
-                            } else {
-                                FolderItemView(title: folder.title, notesCount: .constant(230), dateOfCreate: folder.dateOfCreated)
-                                    .onTapGesture {
-                                        onItemClick?(folder.folderID.wrappedValue)
-                                    }
-                            }
+                           } else {
+                               FolderItemView(title: folder.title, preview: folder.preview, dateOfCreate: folder.dateOfCreated).onTapGesture {
+                                    onItemClick?(folder.folderID.wrappedValue)
+                               }
+                           }
                         }
                     }
                     .padding(.horizontal, 20)
@@ -55,6 +57,10 @@ struct FoldersListView: View {
                 userViewModel.getFolders()
             }
         }
+    }
+    
+    private func searchFolder() {
+        userViewModel.searchFolders(folderTitle: folderSearch)
     }
 }
 

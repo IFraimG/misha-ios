@@ -1,9 +1,3 @@
-//
-//  HomeView.swift
-//  misha
-//
-//  Created by MacBook on 05.07.2024.
-//
 
 import SwiftUI
 import SwiftData

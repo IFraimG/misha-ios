@@ -9,16 +9,16 @@ struct LinksListView: View {
     
     @StateObject private var linkViewModel = LinkViewModel()
     
+    @State private var buttonText = "Удалить (удерживай и тяни сюда)"
+    
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     @State private var isTargeted: Bool = false
     
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                VStack(alignment: .leading) {
-                    Text(folder.title)
-                    Text("230 сохраненных")
-                }
+                Text(folder.title)
+                    .font(.custom("SFProDisplay-Semibold", size: 16))
                 
                 Spacer()
                 
@@ -29,17 +29,11 @@ struct LinksListView: View {
                     }
                     .actionSheet(isPresented: $isButtons) {
                         ActionSheet(title: Text("Изменить"), buttons: [
-                            .default(Text("Удалить ссылку")) {
-                                linkViewModel.setDeleteLink(isDeleteLink: true)
+                            .default(Text(!linkViewModel.isDeleteLink ? "Удалить ссылку" : "Отмена")) {
+                                linkViewModel.setDeleteLink(isDeleteLink: !linkViewModel.isDeleteLink)
                             },
-//                            .default(Text("Изменить обложку")) {
-//
-//                            },
                             .default(Text("Удалить папку")) {
                                 
-                            },
-                            .cancel(Text("Отмена")) {
-                                self.isButtons = false
                             }
                         ])
                     }
@@ -53,7 +47,6 @@ struct LinksListView: View {
                         LinkUIView(viewModel: linkViewModel, linkItem: link)
                             .onDrag({
                                 self.draggedItem = link.linkID
-                                print("iiii \(self.draggedItem)")
                                 return NSItemProvider(item: link.linkID as NSString, typeIdentifier: UTType.plainText.identifier)
                             })
                     }
@@ -74,7 +67,7 @@ struct LinksListView: View {
                         self.draggedItem = nil
                     }
                 }) {
-                    Text("Удалить")
+                    Text(buttonText)
                         .frame(width: 300)
                         .padding()
                         .background(!isTargeted ? Color.red : Color.red.opacity(0.6))
@@ -87,9 +80,6 @@ struct LinksListView: View {
                                               options: nil) { (item, error) in
                         if let item = item as? NSString {
                             self.draggedItem = item as String
-                            
-                            linkViewModel.removeLink(linkID: self.draggedItem ?? "")
-                            self.draggedItem = nil
                         }
                     }
                     return true
