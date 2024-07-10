@@ -24,7 +24,7 @@ struct FoldersListView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                         TextField("Поиск", text: $folderSearch)
-                            .font(Font.custom("SF Pro", size: 16))
+                            .font(Font.custom("SFProDisplay-Medium", size: 16))
                             .onSubmit {
                                 searchFolder()
                             }
@@ -64,6 +64,7 @@ struct FoldersListView: View {
             }) {
                 Text("Добавить папку")
                     .frame(maxWidth: .infinity)
+                    .font(Font.custom("SFProDisplay-Semibold", size: 18))
                     .padding()
                         .background(Color.black.opacity(0.05))
                         .foregroundColor(.blue)
@@ -74,7 +75,9 @@ struct FoldersListView: View {
     }
     
     private func searchFolder() {
-        userViewModel.searchFolders(folderTitle: folderSearch)
+        if !folderSearch.isEmpty {
+            userViewModel.searchFolders(folderTitle: folderSearch)
+        }
     }
 }
 

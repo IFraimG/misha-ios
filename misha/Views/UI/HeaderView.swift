@@ -15,7 +15,8 @@ struct HeaderView: View {
             Image("Image")
                 .resizable()
                 .frame(width: 24, height: 24)
-            Text(title).foregroundColor(.black).font(.system(size: 16))
+            Text(title).foregroundColor(.black)
+                .font(Font.custom("SFProDisplay-Semibold", size: 16))
         }
     }
 }

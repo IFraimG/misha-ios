@@ -11,14 +11,14 @@ struct PopupFolderView: CentrePopup {
         VStack(spacing: 0) {
             Text("Введите название")
                 .padding(.top, 60)
+                .font(Font.custom("SFProDisplay-Bold", size: 17))
             TextField("", text: $folderTitle)
                 .frame(height: 40)
                 .frame(maxWidth: 300)
-                .background(Color.gray.opacity(0.4))
+                .background(Color.gray.opacity(0.2))
                 .cornerRadius(7)
-                .font(Font.custom("SF Pro", size: 16))
+                .font(Font.custom("SFProDisplay-Medium", size: 16))
                 .padding(20)
-                
             
             Spacer()
             
@@ -29,13 +29,16 @@ struct PopupFolderView: CentrePopup {
                 HStack(alignment: .bottom) {
                     Button(action: dismiss) {
                         Text("Отменить")
+                            .font(Font.custom("SFProDisplay-Medium", size: 17))
                     }.padding(.horizontal, 20)
                     
                     Divider()
 
                     Button(action: {
                         makeFolder()
-                    }) { Text("Сохранить") }.padding(.horizontal, 20)
+                    }) { Text("Сохранить")
+                            .font(Font.custom("SFProDisplay-Semibold", size: 17))
+                    }.padding(.horizontal, 20)
                 }
                 
             }.frame(height: 50).padding()
@@ -43,17 +46,18 @@ struct PopupFolderView: CentrePopup {
         .frame(maxHeight: 300)
     }
     
-    func configurePopup(popup: BottomPopupConfig) -> BottomPopupConfig {
+    func configurePopup(popup: CentrePopupConfig) -> CentrePopupConfig {
         popup
             .horizontalPadding(20)
-            .bottomPadding(42)
             .cornerRadius(16)
     }
  
     private func makeFolder() {
-        viewModel.makeFolder(title: folderTitle)
-        self.folderTitle = ""
-        dismiss()
+        if !folderTitle.isEmpty {
+            viewModel.makeFolder(title: folderTitle)
+            self.folderTitle = ""
+            dismiss()
+        }
     }
 }
 

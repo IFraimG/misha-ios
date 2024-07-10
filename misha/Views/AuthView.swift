@@ -43,6 +43,7 @@ struct AuthView: View {
                         .padding(.vertical, 10)
                         .overlay(Rectangle()
                         .frame(height: 3)
+                        .font(Font.custom("SFProDisplay-Semibold", size: 16))
                         .foregroundColor(isSignup ? .blue : .clear), alignment: .bottom)
                     }
                         
@@ -55,20 +56,20 @@ struct AuthView: View {
                             .padding(.vertical, 10)
                             .overlay(Rectangle()
                             .frame(height: 2)
+                            .font(Font.custom("SFProDisplay-Semibold", size: 16))
                             .foregroundColor(!isSignup ? .blue : .clear), alignment: .bottom)
                         }
                     }
                     .frame(width: 350)
                     .padding(.top, 40)
                     
-                    Spacer()
+//                    Spacer()
                     
                     if isSignup {
                         SignupView(isAuthenticated: $isAuthenticated)
                     } else {
                         LoginView(isAuthenticated: $isAuthenticated)
-                    }
-                    
+                    }               
                     Spacer()
                 }
                 .padding(.top, 40)

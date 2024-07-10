@@ -25,6 +25,12 @@ func signup(with body: User, completion: @escaping (Result<ResponseSignupData, E
             return
         }
         
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 403 {
+            let error = NSError(domain: "", code: 403, userInfo: [NSLocalizedDescriptionKey: "Forbidden: Access is denied"])
+            completion(.failure(error))
+            return
+        }
+        
         guard let data = data else {
             let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data"])
             completion(.failure(error))

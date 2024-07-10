@@ -14,13 +14,22 @@ struct LoginView: View {
             Form {
                 Section {
                     TextField("Номер телефона", text: $phone)
+                        .padding()
+                        .frame(height: 60)
+                        .background(Color.gray.opacity(0.15))
+                        .cornerRadius(10)
                         .keyboardType(.phonePad)
+                        .font(Font.custom("SFProDisplay-Medium", size: 14))
                 }
                 
                 Section {
-                    SecureField(text: $password, prompt: Text("Пароль")) {
+                    SecureField(text: $password, prompt: Text("Пароль")
+                        .font(Font.custom("SFProDisplay-Medium", size: 14))) {
                         
-                    }
+                    }.padding()
+                        .frame(height: 60)
+                        .background(Color.gray.opacity(0.15))
+                        .cornerRadius(10)
                 }
                 
                 Button(action: {
@@ -32,8 +41,9 @@ struct LoginView: View {
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(10)
+                        .font(Font.custom("SFProDisplay-Semibold", size: 17))
                 }
-            }
+            }.background(Color.white).scrollContentBackground(.hidden)
             
             NavigationLink(destination: HomeView(isAuthenticated: $isAuthenticated), isActive: $isAuthenticated,
                            label: { EmptyView() }).hidden()
@@ -59,18 +69,10 @@ struct LoginView: View {
     }
     
     private func saveUserData(token: String, id: String) {
-        let user: UserData = UserData(id: id, token: token)
-        modelContext.insert(user)
+        UserDefaults.standard.set(token, forKey: "token")
+        UserDefaults.standard.set(id, forKey: "userID")
         
-        do {
-            try modelContext.save()
-            UserDefaults.standard.set(token, forKey: "token")
-            UserDefaults.standard.set(id, forKey: "userID")
-            
-            isAuthenticated = true
-        } catch {
-            print("Failed to save user data: \(error.localizedDescription)")
-        }
+        self.isAuthenticated = true
     }
 }
 
