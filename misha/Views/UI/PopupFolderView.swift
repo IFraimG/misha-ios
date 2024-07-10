@@ -60,7 +60,7 @@ struct PopupFolderView: CentrePopup {
                     dateOfCreated: "" )) { result in
                     DispatchQueue.main.async {
                         switch result {
-                        case .success(let data):
+                        case .success(_):
                             self.folderTitle = ""
                             dismiss()
                         case .failure(let error):

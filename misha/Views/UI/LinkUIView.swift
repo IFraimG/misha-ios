@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LinkUIView: View {
+    @ObservedObject var viewModel: LinkViewModel
+    
     let linkItem: Link
     
     var body: some View {
@@ -23,13 +25,16 @@ struct LinkUIView: View {
                 Text(linkItem.description)
                         .font(.system(size: 8))
                         .foregroundStyle(Color.black.opacity(0.5))
-            }.frame(width: 160, height: 160).background(
+            }
+            .frame(width: 160, height: viewModel.isDeleteLink ? 220 : 160)
+                .background(
                 BottomRoundedRectangle(cornerRadius: 8)
                     .fill(Color.white.opacity(0.7))
                     .frame(height: 50)
-                    .offset(y: 55)
-            )
-        }.onTapGesture {
+                    .offset(y: 85))
+                .background(viewModel.isDeleteLink ? Color.red.opacity(0.7) : Color.white.opacity(0.7))
+        }
+        .onTapGesture {
             if let url = URL(string: linkItem.link) {
                 UIApplication.shared.open(url)
             }
@@ -38,5 +43,5 @@ struct LinkUIView: View {
 }
 
 #Preview {
-    LinkUIView(linkItem: Link(title: "Рецепт куриных ножек", description: "Как же я обожаю их есть", folderID: "", linkID: "", link: "https://github.com/IFraimG", image: "https://avatars.githubusercontent.com/u/52083535?v=4"))
+    LinkUIView(viewModel: LinkViewModel(), linkItem: Link(title: "Рецепт куриных ножек", description: "Как же я обожаю их есть", folderID: "", linkID: "", link: "https://github.com/IFraimG", image: "https://avatars.githubusercontent.com/u/52083535?v=4"))
 }

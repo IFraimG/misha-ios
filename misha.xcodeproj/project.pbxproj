@@ -31,6 +31,9 @@
 		FA5E20B92C32F4CE00ED8989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5E20B82C32F4CE00ED8989 /* Assets.xcassets */; };
 		FA5E20BC2C32F4CE00ED8989 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5E20BB2C32F4CE00ED8989 /* Preview Assets.xcassets */; };
 		FA6598332C3D35CD00C7FD5C /* HTMLReader in Frameworks */ = {isa = PBXBuildFile; productRef = FA6598322C3D35CD00C7FD5C /* HTMLReader */; };
+		FA7CF3022C3EC40E00B14FA1 /* LinkRemoveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CF3012C3EC40E00B14FA1 /* LinkRemoveRequest.swift */; };
+		FA7CF3042C3ED4DD00B14FA1 /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CF3032C3ED4DD00B14FA1 /* HoverButton.swift */; };
+		FA7CF3062C3ED6FD00B14FA1 /* ResponseLinkRemove.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CF3052C3ED6FD00B14FA1 /* ResponseLinkRemove.swift */; };
 		FA7DC1662C3BEAC4002E7FB9 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DC1652C3BEAC4002E7FB9 /* Folder.swift */; };
 		FA7DC1682C3BEB55002E7FB9 /* ResponseCreateFolderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DC1672C3BEB55002E7FB9 /* ResponseCreateFolderRequest.swift */; };
 		FA7DC16A2C3C05F2002E7FB9 /* GetFoldersListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DC1692C3C05F2002E7FB9 /* GetFoldersListRequest.swift */; };
@@ -103,6 +106,9 @@
 		FA5E20B62C32F4CB00ED8989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA5E20B82C32F4CE00ED8989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA5E20BB2C32F4CE00ED8989 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA7CF3012C3EC40E00B14FA1 /* LinkRemoveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRemoveRequest.swift; sourceTree = "<group>"; };
+		FA7CF3032C3ED4DD00B14FA1 /* HoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
+		FA7CF3052C3ED6FD00B14FA1 /* ResponseLinkRemove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLinkRemove.swift; sourceTree = "<group>"; };
 		FA7DC1652C3BEAC4002E7FB9 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		FA7DC1672C3BEB55002E7FB9 /* ResponseCreateFolderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCreateFolderRequest.swift; sourceTree = "<group>"; };
 		FA7DC1692C3C05F2002E7FB9 /* GetFoldersListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFoldersListRequest.swift; sourceTree = "<group>"; };
@@ -217,6 +223,7 @@
 			children = (
 				FA2C61A52C3C77FE003F2E4D /* LinkCreateRequest.swift */,
 				FA9AC4F12C3DE0BE00536B1F /* LinkGetByFolderIdRequest.swift */,
+				FA7CF3012C3EC40E00B14FA1 /* LinkRemoveRequest.swift */,
 			);
 			path = Link;
 			sourceTree = "<group>";
@@ -255,6 +262,7 @@
 				FA7DC1672C3BEB55002E7FB9 /* ResponseCreateFolderRequest.swift */,
 				FA7DC16B2C3C0644002E7FB9 /* ResponseFoldersListDto.swift */,
 				FA9AC4F42C3DE14A00536B1F /* ResponseLinksListDto.swift */,
+				FA7CF3052C3ED6FD00B14FA1 /* ResponseLinkRemove.swift */,
 			);
 			path = Dto;
 			sourceTree = "<group>";
@@ -318,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				FA9AC4E52C3DC3A900536B1F /* LinkCreateState.swift */,
+				FA7CF3032C3ED4DD00B14FA1 /* HoverButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -461,8 +470,10 @@
 				FA7DC16A2C3C05F2002E7FB9 /* GetFoldersListRequest.swift in Sources */,
 				FA9AC4F52C3DE14A00536B1F /* ResponseLinksListDto.swift in Sources */,
 				FA4D18582C372D3C00A8AF35 /* LoginRequest.swift in Sources */,
+				FA7CF3042C3ED4DD00B14FA1 /* HoverButton.swift in Sources */,
 				FA5E1CBC2C36DD8400C74BD6 /* LoginView.swift in Sources */,
 				FA4D185B2C372F9200A8AF35 /* UserData.swift in Sources */,
+				FA7CF3062C3ED6FD00B14FA1 /* ResponseLinkRemove.swift in Sources */,
 				FA9AC4E62C3DC3A900536B1F /* LinkCreateState.swift in Sources */,
 				FA5E1CB42C36B25900C74BD6 /* User.swift in Sources */,
 				FA5E1CBA2C36DD7200C74BD6 /* SignupView.swift in Sources */,
@@ -473,6 +484,7 @@
 				FACC4BF12C3C6F5200D54F19 /* HeaderView.swift in Sources */,
 				FA1022E32C39A76F00B6D82B /* BottomRoundedShape.swift in Sources */,
 				FA2142032C358DE200B5799C /* LaunchScreenView.swift in Sources */,
+				FA7CF3022C3EC40E00B14FA1 /* LinkRemoveRequest.swift in Sources */,
 				FA1022E92C39B61E00B6D82B /* PopupFolderView.swift in Sources */,
 				FA7DC16F2C3C0C57002E7FB9 /* LinksListView.swift in Sources */,
 				FA1022ED2C39EBCC00B6D82B /* FolderCreateRequest.swift in Sources */,
