@@ -11,7 +11,7 @@ struct LoginView: View {
     
     var body: some View {
         NavigationStack {
-            Form {
+            VStack(spacing: 20) {
                 Section {
                     TextField("Номер телефона", text: $phone)
                         .padding()
@@ -43,6 +43,8 @@ struct LoginView: View {
                         .cornerRadius(10)
                         .font(Font.custom("SFProDisplay-Semibold", size: 17))
                 }
+                
+                Spacer()
             }.background(Color.white).scrollContentBackground(.hidden)
             
             NavigationLink(destination: HomeView(isAuthenticated: $isAuthenticated), isActive: $isAuthenticated,

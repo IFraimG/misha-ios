@@ -16,10 +16,9 @@ struct FoldersListView: View {
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
+        HeaderView(title: $title)
         NavigationStack {
             VStack {
-                HeaderView(title: $title)
-                
                 HStack {
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -53,7 +52,8 @@ struct FoldersListView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
                 }
-            }.onAppear() {
+            }
+            .onAppear() {
                 userViewModel.getFolders()
             }
             
@@ -72,6 +72,7 @@ struct FoldersListView: View {
                         .cornerRadius(10)
                 }.padding(.horizontal, 20).padding(.top, 20)
         }
+//        .searchable(text: $folderSearch)
     }
     
     private func searchFolder() {

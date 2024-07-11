@@ -66,9 +66,9 @@ struct AuthView: View {
 //                    Spacer()
                     
                     if isSignup {
-                        SignupView(isAuthenticated: $isAuthenticated)
+                        SignupView(isAuthenticated: $isAuthenticated).padding(.top, 40)
                     } else {
-                        LoginView(isAuthenticated: $isAuthenticated)
+                        LoginView(isAuthenticated: $isAuthenticated).padding(.top, 40)
                     }               
                     Spacer()
                 }

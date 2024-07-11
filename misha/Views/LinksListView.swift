@@ -18,31 +18,29 @@ struct LinksListView: View {
     
     var body: some View {
         VStack {
-            HStack(alignment: .center) {
-                Text(folder.title)
-                    .font(.custom("SFProDisplay-Semibold", size: 16))
+            Text(folder.title).font(.custom("SFProDisplay-Semibold", size: 16))
                 
-                Spacer()
+//                Spacer()
                 
-                Image("Points")
-                    .frame(width: 32, height: 32)
-                    .onTapGesture {
-                        self.isButtons = !isButtons
-                    }
-                    .actionSheet(isPresented: $isButtons) {
-                        ActionSheet(title: Text("Изменить"), buttons: [
-                            .default(Text(!linkViewModel.isDeleteLink ? "Удалить ссылку" : "Отмена")) {
-                                linkViewModel.setDeleteLink(isDeleteLink: !linkViewModel.isDeleteLink)
-                            },
-                            .default(Text("Удалить папку")) {
-                                linkViewModel.deleteFolder(folderID: folder.folderID)
-                                dismiss()
-                            }
-                        ])
-                    }
-            }
-            .padding(.horizontal, 20)
-            .padding(.top, 20)
+//                Image("Points")
+//                    .frame(width: 32, height: 32)
+//                    .onTapGesture {
+//                        self.isButtons = !isButtons
+//                    }
+//                    .actionSheet(isPresented: $isButtons) {
+//                        ActionSheet(title: Text("Изменить"), buttons: [
+//                            .default(Text(!linkViewModel.isDeleteLink ? "Удалить ссылку" : "Отмена")) {
+//                                linkViewModel.setDeleteLink(isDeleteLink: !linkViewModel.isDeleteLink)
+//                            },
+//                            .default(Text("Удалить папку")) {
+//                                linkViewModel.deleteFolder(folderID: folder.folderID)
+//                                dismiss()
+//                            }
+//                        ])
+//                    }
+//            }
+//            .padding(.horizontal, 20)
+//            .padding(.top, 20)
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
@@ -88,6 +86,21 @@ struct LinksListView: View {
                     return true
                 })
             }
+        }.navigationTitle("").toolbar {
+            Button("", systemImage: "ellipsis", action: {
+                self.isButtons = !isButtons
+            })
+            .actionSheet(isPresented: $isButtons) {
+                    ActionSheet(title: Text("Изменить"), buttons: [
+                        .default(Text(!linkViewModel.isDeleteLink ? "Удалить ссылку" : "Отмена")) {
+                            linkViewModel.setDeleteLink(isDeleteLink: !linkViewModel.isDeleteLink)
+                        },
+                        .default(Text("Удалить папку")) {
+                            linkViewModel.deleteFolder(folderID: folder.folderID)
+                            dismiss()
+                        }
+                    ])
+                }
         }
     }
 }
