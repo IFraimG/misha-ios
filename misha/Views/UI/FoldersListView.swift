@@ -24,7 +24,7 @@ struct FoldersListView: View {
                         Image(systemName: "magnifyingglass")
                         TextField("Поиск", text: $folderSearch)
                             .font(Font.custom("SFProDisplay-Medium", size: 16))
-                            .onSubmit {
+                            .onChange(of: folderSearch) {
                                 searchFolder()
                             }
                     }
@@ -72,12 +72,13 @@ struct FoldersListView: View {
                         .cornerRadius(10)
                 }.padding(.horizontal, 20).padding(.top, 20)
         }
-//        .searchable(text: $folderSearch)
     }
     
     private func searchFolder() {
         if !folderSearch.isEmpty {
             userViewModel.searchFolders(folderTitle: folderSearch)
+        } else {
+            userViewModel.getFolders()
         }
     }
 }
