@@ -36,6 +36,7 @@ struct FolderItemView: View {
                     .fill(Color.white.opacity(0.7))
                     .frame(height: 40)
                     .offset(y: 60))
+            
         }
     }
 }

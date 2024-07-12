@@ -20,6 +20,7 @@ struct LinkPreviewImage: View {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             .scaleEffect(1.5)
+                            .cornerRadius(8)
                     }
                 case .success(let image):
                     image.resizable()
@@ -27,12 +28,13 @@ struct LinkPreviewImage: View {
                         .frame(width: 160, height: 160)
                         .frame(maxWidth: 160, maxHeight: 160)
                         .cornerRadius(8)
-                        .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 2)
+                        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 2)
                 case .failure(_):
                     Image("Empty").resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 160, height: 160)
                         .cornerRadius(8)
+                        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 2)
                 @unknown default:
                     EmptyView()
                 }
